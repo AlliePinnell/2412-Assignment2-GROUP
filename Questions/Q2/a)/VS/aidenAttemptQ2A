@@ -1,0 +1,64 @@
+Node* findSuccessor(Node*& currentPoint)
+{
+    if (currentPoint == nullptr)
+    {
+        return nullptr;
+    }
+    if (currentPoint->left == nullptr)
+    {
+        return currentPoint;
+    }
+    return findSuccessor(currentPoint->left);
+}
+
+Node* findPredecessor(Node*& currentPoint)
+{
+    if (currentPoint == nullptr)
+    {
+        return nullptr;
+    }
+    if (currentPoint->right == nullptr)
+    {
+        return currentPoint;
+    }
+    return findPredecessor(currentPoint->right);
+}
+
+Node* deleteNode(Node*& currentNode, int deleteValue) {
+    if (currentNode == nullptr)
+    {
+        return nullptr;
+    }
+    else if (deleteValue < currentNode->value) {
+        currentNode->left = deleteNode(currentNode->left, deleteValue);
+    }
+    else if (deleteValue > currentNode->value) {
+        currentNode->right = deleteNode(currentNode->right, deleteValue);
+    }
+    else {
+        if (currentNode->left == nullptr && currentNode->right == nullptr) {
+            delete currentNode;
+            return nullptr;
+        }
+        if (currentNode->left == nullptr)
+        {
+            Node* replacementNode = currentNode->right;
+            delete currentNode;
+            return replacementNode;
+
+        }
+        if (currentNode->right == nullptr)
+        {
+            Node* replacementNode = currentNode->left;
+            delete currentNode;
+            return replacementNode;
+        }
+
+        Node* largestSmall = findPredecessor(currentNode->left);
+        currentNode->value = largestSmall->value;
+        currentNode->left = deleteNode(currentNode->left, largestSmall->value);
+    }
+
+    return currentNode;
+
+}
