@@ -1,0 +1,33 @@
+int main()
+{
+  Node* rootThree = nullptr;
+  insertElement(rootThree, 55);
+  insertElement(rootThree, 40);
+  insertElement(rootThree, 65);
+  insertElement(rootThree, 30);
+  insertElement(rootThree, 45);
+  insertElement(rootThree, 60);
+  insertElement(rootThree, 70);
+  insertElement(rootThree, 42);
+  insertElement(rootThree, 50);
+  insertElement(rootThree, 58);
+  insertElement(rootThree, 62);
+  
+  //third sequence traverse
+  std::cout << std::endl << "Pre Order: " << std::endl;
+  traversePreOrder(rootThree);
+  std::cout << std::endl << "In Order: " << std::endl;
+  traverseInOrder(rootThree);
+  std::cout << std::endl << "Post Order: " << std::endl;
+  traversePostOrder(rootThree);
+  
+  deleteNode(rootThree, 40);
+  std::cout << std::endl << "In Order: " << std::endl;
+  traverseInOrder(rootThree);
+  deleteNode(rootThree, 45);
+  std::cout << std::endl << "In Order: " << std::endl;
+  traverseInOrder(rootThree);
+  deleteNode(rootThree, 30);
+  std::cout << std::endl << "In Order: " << std::endl;
+  traverseInOrder(rootThree);
+}
