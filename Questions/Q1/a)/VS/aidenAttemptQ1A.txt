@@ -1,0 +1,53 @@
+struct Node {
+    int value;
+    struct Node* left;
+    struct Node* right;
+};
+
+Node* insertElement(Node*& root, int value) {
+    if (root == nullptr)
+    {
+        root = new Node{ value, nullptr, nullptr };
+    }
+    if (value < root->value)
+    {
+        root->left = insertElement(root->left, value);
+    }
+    else if (value > root->value)
+    {
+        root->right = insertElement(root->right, value);
+    }
+
+    return root;
+
+}
+
+bool searchTree(Node*& root, int searchValue)
+{
+    if (root == nullptr)
+    {
+        return false;
+    }
+    if (root->value == searchValue)
+    {
+        return true;
+    }
+    if (searchValue < root->value) {
+        return searchTree(root->left, searchValue);
+    }
+    if (searchValue > root->value) {
+        return searchTree(root->right, searchValue);
+    }
+}
+
+int main()
+{
+  Node* rootOne = nullptr;
+
+  insertElement(rootOne, 15);
+  insertElement(rootOne, 10);
+  insertElement(rootOne, 20);
+
+  std::cout << searchTree(rootOne, 20) << std::endl;
+}
+
