@@ -1,0 +1,70 @@
+void traversePreOrder(Node*& root) {
+    if (root == nullptr) {
+        return;
+    }
+    std::cout << root->value << " ";
+    traversePreOrder(root->left);
+    traversePreOrder(root->right);
+}
+
+void traverseInOrder(Node*& root) {
+    if (root == nullptr) {
+        return;
+    }
+    traverseInOrder(root->left);
+    std::cout << root->value << " ";
+    traverseInOrder(root->right);
+}
+
+void traversePostOrder(Node*& root) {
+    if (root == nullptr) {
+        return;
+    }
+    traversePostOrder(root->left);
+    
+    traversePostOrder(root->right);
+    std::cout << root->value << " ";
+}
+
+int main()
+{
+    Node* rootOne = nullptr;
+    Node* rootTwo = nullptr;
+
+    //first sequence
+    insertElement(rootOne, 15);
+    insertElement(rootOne, 10);
+    insertElement(rootOne, 20);
+    insertElement(rootOne, 8);
+    insertElement(rootOne, 12);
+    insertElement(rootOne, 17);
+    insertElement(rootOne, 25);
+
+    //second sequence
+    insertElement(rootTwo, 50);
+    insertElement(rootTwo, 30);
+    insertElement(rootTwo, 70);
+    insertElement(rootTwo, 20);
+    insertElement(rootTwo, 40);
+    insertElement(rootTwo, 60);
+    insertElement(rootTwo, 80);
+
+
+    //first sequence traverse
+    std::cout << std::endl << "Pre Order: " << std::endl;
+    traversePreOrder(rootOne);
+    std::cout << std::endl << "In Order: " << std::endl;
+    traverseInOrder(rootOne);
+    std::cout << std::endl << "Post Order: " << std::endl;
+    traversePostOrder(rootOne);
+
+    //second sequence traverse
+    std::cout << std::endl << "Pre Order: " << std::endl;
+
+    traversePreOrder(rootTwo);
+    std::cout <<  std::endl << "In Order: " << std::endl;
+    traverseInOrder(rootTwo);
+    std::cout << std::endl << "Post Order: " << std::endl;
+    traversePostOrder(rootTwo);
+    std::cout << std::endl;
+}
