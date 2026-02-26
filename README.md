@@ -24,7 +24,8 @@ This assignment is worth 10 points. Each question is worth 2.5 points.
 # Questions for Thiago
 | Questions | Response
 | ----------- | ----------- 
-| blank | blank
+| Account for dupes or no? | blank
+| What structure in Q4? | blank
 
 # Questions (copied from PDF)
 # Question 1
