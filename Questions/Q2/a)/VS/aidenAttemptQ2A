@@ -1,4 +1,4 @@
-Node* findSuccessor(Node*& currentPoint)
+Node* findSuccessor(Node* currentPoint)
 {
     if (currentPoint == nullptr)
     {
@@ -11,7 +11,7 @@ Node* findSuccessor(Node*& currentPoint)
     return findSuccessor(currentPoint->left);
 }
 
-Node* findPredecessor(Node*& currentPoint)
+Node* findPredecessor(Node* currentPoint)
 {
     if (currentPoint == nullptr)
     {
