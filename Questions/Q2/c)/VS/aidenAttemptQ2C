@@ -1,4 +1,4 @@
-Node* findSmallest(Node*& currentPoint)
+Node* findSmallest(Node* currentPoint)
 {
     if (currentPoint == nullptr)
     {
@@ -11,7 +11,7 @@ Node* findSmallest(Node*& currentPoint)
     return findSmallest(currentPoint->left);
 }
 
-Node* findLargest(Node*& currentPoint)
+Node* findLargest(Node* currentPoint)
 {
     if (currentPoint == nullptr)
     {
