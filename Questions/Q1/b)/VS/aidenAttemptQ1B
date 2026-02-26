@@ -1,4 +1,4 @@
-void traversePreOrder(Node*& root) {
+void traversePreOrder(Node* root) {
     if (root == nullptr) {
         return;
     }
@@ -7,7 +7,7 @@ void traversePreOrder(Node*& root) {
     traversePreOrder(root->right);
 }
 
-void traverseInOrder(Node*& root) {
+void traverseInOrder(Node* root) {
     if (root == nullptr) {
         return;
     }
@@ -16,7 +16,7 @@ void traverseInOrder(Node*& root) {
     traverseInOrder(root->right);
 }
 
-void traversePostOrder(Node*& root) {
+void traversePostOrder(Node* root) {
     if (root == nullptr) {
         return;
     }
