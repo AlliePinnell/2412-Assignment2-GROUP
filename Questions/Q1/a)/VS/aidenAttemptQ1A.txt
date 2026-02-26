@@ -22,7 +22,7 @@ Node* insertElement(Node*& root, int value) {
 
 }
 
-bool searchTree(Node*& root, int searchValue)
+bool searchTree(Node* root, int searchValue)
 {
     if (root == nullptr)
     {
