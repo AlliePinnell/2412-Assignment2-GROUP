@@ -1,0 +1,149 @@
+
+struct Node {
+    int value;
+    struct Node* left;
+    struct Node* right;
+    int height;
+    int balancedFactor;
+};
+
+int getHeight(Node* heightNode) {
+    if (heightNode == nullptr)
+    {
+        return -1;
+    }
+    return std::max(getHeight(heightNode->left), getHeight(heightNode->right)) + 1;
+}
+
+int calculateBalance(Node* balanceNode) {
+    if (balanceNode == nullptr) 
+        return 0;
+
+    return getHeight(balanceNode->left) - getHeight(balanceNode->right);
+}
+
+void rotateLeft(Node*& rootPoint) {
+    Node* tp = rootPoint->right;
+    rootPoint->right = tp->left;
+    tp->left = rootPoint;
+
+    rootPoint->height = getHeight(rootPoint);
+    tp->height = getHeight(tp);
+
+    rootPoint->balancedFactor = calculateBalance(rootPoint);
+    tp->balancedFactor = calculateBalance(tp);
+
+    rootPoint = tp;
+}
+
+void rotateRight(Node*& rootPoint) {
+    Node* tp = rootPoint->left;
+    rootPoint->left = tp->right;
+    tp->right = rootPoint;
+
+    rootPoint->height = getHeight(rootPoint);
+    tp->height = getHeight(tp);
+
+    rootPoint->balancedFactor = calculateBalance(rootPoint);
+    tp->balancedFactor = calculateBalance(tp);
+
+    rootPoint = tp;
+}
+
+void correctBalance(Node*& currentPoint) {
+    int bf = currentPoint->balancedFactor;
+    if (bf <= 1 && bf >= -1) {
+        return;
+    }
+
+    if (bf == 2 && currentPoint->left->balancedFactor >= 0)
+    {
+        rotateRight(currentPoint);
+        return;
+    }
+    if (bf == 2 && currentPoint->left->balancedFactor < 0)
+    {
+        rotateLeft(currentPoint->left);
+        rotateRight(currentPoint);
+        return;
+    }
+
+    if (bf == -2 && currentPoint->right->balancedFactor <= 0)
+    {
+        rotateLeft(currentPoint);
+        return;
+    }
+
+    if (bf == -2 && currentPoint->right->balancedFactor > 0)
+    {
+        rotateRight(currentPoint->right);
+        rotateLeft(currentPoint);
+        return;
+    }
+}
+
+
+Node* insertNode(Node*& currentPoint, int value)
+{
+    if (currentPoint == nullptr) {
+        return new Node{ value, nullptr, nullptr, 0, 0 };
+    }
+    if (value < currentPoint->value) {
+        currentPoint->left = insertNode(currentPoint->left, value);
+    }
+    if (value > currentPoint->value) {
+        currentPoint->right = insertNode(currentPoint->right, value);
+
+    }
+
+    currentPoint->height = getHeight(currentPoint);
+    currentPoint->balancedFactor = calculateBalance(currentPoint);
+    correctBalance(currentPoint);
+
+    return currentPoint;
+}
+
+Node* deleteNode(Node*& currentPoint, int deleteValue) {
+    if (currentPoint == nullptr) {
+        return nullptr;
+    }
+    if (deleteValue < currentPoint->value)
+    {
+        currentPoint->left = deleteNode(currentPoint->left, deleteValue);
+    }
+    else if (deleteValue > currentPoint->value)
+    {
+        currentPoint->right = deleteNode(currentPoint->right, deleteValue);
+    }
+    else {
+        if (currentPoint->left == nullptr && currentPoint->right == nullptr)
+        {
+            delete currentPoint;
+            return nullptr;
+        }
+        if (currentPoint->left == nullptr)
+        {
+            Node* replacement = currentPoint->right;
+            delete currentPoint;
+            return replacement;
+        }
+        if (currentPoint->right == nullptr)
+        {
+            Node* replacement = currentPoint->left;
+            delete currentPoint;
+            return replacement;
+        }
+
+
+        Node* replacement = findSuccessor(currentPoint->right);
+        currentPoint->value = replacement->value;
+        currentPoint->right = deleteNode(currentPoint->right, replacement->value);
+
+    }
+    currentPoint->height = getHeight(currentPoint);
+    currentPoint->balancedFactor = calculateBalance(currentPoint);
+    correctBalance(currentPoint);
+
+    return currentPoint;
+    
+}
