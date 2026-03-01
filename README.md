@@ -21,6 +21,7 @@ This assignment is worth 10 points. Each question is worth 2.5 points.
 | ----------- | ----------- 
 | Account for dupes or no? | blank
 | What structure in Q4? | blank
+| Do we need to print the Tree Structure for Q3/Q4? | blank
 
 # Questions (copied from PDF)
 # Question 1
