@@ -10,16 +10,11 @@ This assignment is worth 10 points. Each question is worth 2.5 points.
 
 | Questions | C++ Code Completion | Docker Implementation | ❗FINAL REVIEW ❗|
 | ----------- | ----------- | ----------- | ----------- |
-| 1 a) | ✖️ | ✖️ | ✖️ 
-| 1 b) | ✖️ | ✖️ | ✖️ 
-| 2 a) | ✖️ | ✖️ | ✖️ 
-| 2 b) | ✖️ | ✖️ | ✖️ 
-| 2 c) | ✖️ | ✖️ | ✖️ 
-| 3 a) | ✖️ | ✖️ | ✖️ 
-| 3 b) | ✖️ | ✖️ | ✖️ 
-| 4 a) | ✖️ | ✖️ | ✖️ 
-| 4 b) | ✖️ | ✖️ | ✖️ 
-| 4 c) | ✖️ | ✖️ | ✖️ 
+| 1 | ✖️ | ✖️ | ✖️ 
+| 2 | ✖️ | ✖️ | ✖️ 
+| 3 | ✖️ | ✖️ | ✖️ 
+| 4 | ✖️ | ✖️ | ✖️ 
+
 
 # Questions for Thiago
 | Questions | Response
