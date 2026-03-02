@@ -71,6 +71,14 @@ void traversePostOrder(Node* root) {
     std::cout << root->value << " ";
 }
 
+Node* InsertNodes(int array[], int size, Node* root) {
+    for (int i = 0; i < size; i++) {
+        root = Insert(root, array[i]);
+    }
+
+    return root;
+}
+
 int main() {
     int firstSequence[7] = { 15, 10, 20, 8, 12, 17, 25 };
     int secondSequence[7] = { 50, 30, 70, 20, 40, 60, 80 };
@@ -78,14 +86,8 @@ int main() {
     Node* firstRoot = nullptr;
     Node* secondRoot = nullptr;
 
-    for (int num : firstSequence) {
-        firstRoot = Insert(firstRoot, num);
-    }//end foreach
-
-    for (int num : secondSequence) {
-        secondRoot = Insert(secondRoot, num);
-    }//end foreach
-
+    firstRoot = InsertNodes(firstSequence, 7, firstRoot);
+    secondRoot = InsertNodes(secondSequence, 7, secondRoot);
 
     std::cout << " ----- InOrder Traversals ----- " << std::endl;
     traverseInOrder(firstRoot);

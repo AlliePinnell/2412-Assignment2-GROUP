@@ -162,22 +162,20 @@ Node* findLargest(Node* currentPoint)
     return findLargest(currentPoint->right);
 }
 
-Node* InsertNodes(Node* root) {
-    int numbers[] = { 55, 40, 65, 30, 45, 60, 70, 42, 50, 58, 62 };
-
-    for (int num : numbers) {
-        root = Insert(root, num);
+Node* InsertNodes(int array[], int size, Node* root) {
+    for (int i = 0; i < size; i++) {
+        root = Insert(root, array[i]);
     }
 
     return root;
 }
 
-
 int main()
 {
     Node* rootThree = nullptr;
+    int numbers[] = { 55, 40, 65, 30, 45, 60, 70, 42, 50, 58, 62 };
 
-    rootThree = InsertNodes(rootThree);
+    rootThree = InsertNodes(numbers, 11, rootThree);
 
     //third sequence traverse
     std::cout << " ----- InOrder Traversals ----- " << std::endl;

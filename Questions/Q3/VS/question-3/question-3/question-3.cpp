@@ -163,7 +163,7 @@ AVLNode* rotationHelper(AVLNode* node) {
     return node;
 }
 
-AVLNode* AVLinsertion(AVLNode* root, int value) {
+AVLNode* AVLInsert(AVLNode* root, int value) {
     if (root == nullptr) {
         return createNode(value);
     }
@@ -174,21 +174,19 @@ AVLNode* AVLinsertion(AVLNode* root, int value) {
     }
 
     if (value > root->value) {
-        root->right = AVLinsertion(root->right, value);
+        root->right = AVLInsert(root->right, value);
     }
     else if (value < root->value) {
-        root->left = AVLinsertion(root->left, value);
+        root->left = AVLInsert(root->left, value);
     }
 
     updateHeightBF(root);
     return rotationHelper(root);
 }
 
-AVLNode* InsertNodes(AVLNode* root) {
-    int numbers[] = { 10, 20, 30, 40, 50, 25 };
-
-    for (int num : numbers) {
-        root = AVLinsertion(root, num);
+AVLNode* InsertNodes(int array[], int size, AVLNode* root) {
+    for (int i = 0; i < size; i++) {
+        root = AVLInsert(root, array[i]);
     }
 
     return root;
@@ -206,7 +204,9 @@ void traverseInOrder(AVLNode* root) {
 int main()
 {
     AVLNode* root = nullptr;
-    root = InsertNodes(root);
+    int numbers[] = { 10, 20, 30, 40, 50, 25 };
+
+    root = InsertNodes(numbers, 6, root);
 
     std::cout << " - InOrder Traversals - " << std::endl;
     traverseInOrder(root);
