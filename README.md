@@ -22,6 +22,7 @@ This assignment is worth 10 points. Each question is worth 2.5 points.
 | Account for dupes or no? (Q1) | blank
 | What structure in Q4? | blank
 | Do we need to print the Tree Structure for Q3/Q4? | blank
+| Question 1 b) - Do you want the BST drawing and explained output of each traversal for both trees on paper or included in the complementary README? | blank
 
 # Questions (copied from PDF)
 # Question 1
