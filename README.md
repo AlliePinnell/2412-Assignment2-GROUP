@@ -19,7 +19,7 @@ This assignment is worth 10 points. Each question is worth 2.5 points.
 # Questions for Thiago
 | Questions | Response
 | ----------- | ----------- 
-| Account for dupes or no? | blank
+| Account for dupes or no? (Q1) | blank
 | What structure in Q4? | blank
 | Do we need to print the Tree Structure for Q3/Q4? | blank
 
