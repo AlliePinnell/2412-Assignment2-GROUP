@@ -10,7 +10,7 @@ This assignment is worth 10 points. Each question is worth 2.5 points.
 
 | Questions | C++ Code Completion | Docker Implementation | Additional Things | FINAL REVIEW |
 | ----------- | ----------- | ----------- | ----------- | ----------- 
-| 1 | ✔️ | ✖️ | ⚠️ Waiting for Thiago | ✖️ |
+| 1 | ✔️ | ✖️ | ✖️ | ✖️ |
 | 2 | ✔️ | ✖️ | ✖️ | ✖️ |
 | 3 | ✔️ | ✖️ | ✔️ | ✖️ |
 | 4 | ✖️ | ✖️ | ✖️ | ✖️ |
@@ -19,10 +19,10 @@ This assignment is worth 10 points. Each question is worth 2.5 points.
 # Questions for Thiago
 | Questions | Response
 | ----------- | ----------- 
-| Account for dupes or no? (Q1) | blank
-| What structure in Q4? | blank
-| Do we need to print the Tree Structure for Q3/Q4? | blank
-| Question 1 b) - Do you want the BST drawing and explained output of each traversal for both trees on paper or included in the complementary README? | blank
+| Account for dupes or no? (Q1) | No, and in general just ignore duplicates
+| What structure in Q4? | Same as the node structure, but add balance factor (can add height, but don't need to(?))
+| Do we need to print the Tree Structure for Q3/Q4? | Print before and after every rotation and print what rotation
+| Question 1 b) - Do you want the BST drawing and explained output of each traversal for both trees on paper or included in the complementary README? | draw it on paper, scan, and submit
 
 # Questions (copied from PDF)
 # Question 1
