@@ -82,9 +82,9 @@ struct AVLNode {
 AVLNode* createNode(int value) {
     AVLNode* newNode = new AVLNode();
     newNode->value = value;
-    newNode->bf = 0;
-    newNode->height = 1;
-    newNode->counter = 0;
+    newNode->bf;
+    newNode->height;
+    newNode->counter;
     newNode->left = nullptr;
     newNode->right = nullptr;
     return newNode;
