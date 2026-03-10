@@ -101,6 +101,33 @@ int updateHeightBF(AVLNode* node) {
     return node->height;
 }
 
+void traversePreOrder(AVLNode* root) {
+    if (root == nullptr) {
+        return;
+    }
+    std::cout << root->value << " ";
+    traversePreOrder(root->left);
+    traversePreOrder(root->right);
+}
+
+void traverseInOrder(AVLNode* root) {
+    if (root == nullptr) {
+        return;
+    }
+    traverseInOrder(root->left);
+    std::cout << root->value << " ";
+    traverseInOrder(root->right);
+}
+
+void traversePostOrder(AVLNode* root) {
+    if (root == nullptr) {
+        return;
+    }
+    traversePostOrder(root->left);
+    traversePostOrder(root->right);
+    std::cout << root->value << " ";
+}
+
 void rotationUpdater(AVLNode* node, AVLNode* tp) {
     updateHeightBF(node);
     updateHeightBF(tp);
@@ -108,60 +135,79 @@ void rotationUpdater(AVLNode* node, AVLNode* tp) {
 
 //Left Rotation
 AVLNode* leftRotation(AVLNode* node) {
+    std::cout << "Before Left Rotation: ";
+    traversePreOrder(node);
+    std::cout << endl;
+
     AVLNode* tp = node->right;
     node->right = tp->left;
     tp->left = node;
 
     rotationUpdater(node, tp);
 
+    std::cout << "After Left Rotation: ";
+    traversePreOrder(tp);
+    std::cout << endl << endl;
+
     return tp;
 }
 
 // Right Rotation
 AVLNode* rightRotation(AVLNode* node) {
+    std::cout << "Before Right Rotation: ";
+    traversePreOrder(node);
+    std::cout << endl;
+
     AVLNode* tp = node->left;
     node->left = tp->right;
     tp->right = node;
 
     rotationUpdater(node, tp);
 
+    std::cout << "After Right Rotation: ";
+    traversePreOrder(tp);
+    std::cout << endl << endl;
+
     return tp;
 }
 
 // Left->Right Rotation
 AVLNode* leftRightRotation(AVLNode* node) {
-    AVLNode* tp = node->left;
-    node->left = tp->right;
-    node->left->left = tp;
-
+    node->left = leftRotation(node->left);
     return rightRotation(node);
 }
 
 // Right->Left Rotation
 AVLNode* rightLeftRotation(AVLNode* node) {
-    AVLNode* tp = node->right;
-    node->right = tp->left;
-    node->right->right = tp;
-
+    node->right = rightRotation(node->right);
     return leftRotation(node);
 }
 
 
 AVLNode* rotationHelper(AVLNode* node) {
-    if (node->bf < -1 && node->right->bf < -1) {
+    // Right-Right
+    if (node->bf < -1 && node->right->bf <= 0) {
         return leftRotation(node);
     }
-    if (node->bf > 1 && node->left->bf < -1) {
+
+    // Left-Right
+    if (node->bf > 1 && node->left->bf < 0) {
         return leftRightRotation(node);
     }
-    if (node->bf < -1 && node->right->bf > 1) {
+
+    // Right-Left
+    if (node->bf < -1 && node->right->bf > 0) {
         return rightLeftRotation(node);
     }
-    if (node->bf > 1 && node->left->bf > 1) {
+
+    // Left-Left
+    if (node->bf > 1 && node->left->bf >= 0) {
         return rightRotation(node);
     }
+
     return node;
 }
+
 
 AVLNode* AVLInsert(AVLNode* root, int value) {
     if (root == nullptr) {
@@ -187,18 +233,10 @@ AVLNode* AVLInsert(AVLNode* root, int value) {
 AVLNode* InsertNodes(int array[], int size, AVLNode* root) {
     for (int i = 0; i < size; i++) {
         root = AVLInsert(root, array[i]);
+        globalRoot = root;
     }
 
     return root;
-}
-
-void traverseInOrder(AVLNode* root) {
-    if (root == nullptr) {
-        return;
-    }
-    traverseInOrder(root->left);
-    std::cout << root->value << " ";
-    traverseInOrder(root->right);
 }
 
 int main()
@@ -208,7 +246,15 @@ int main()
 
     root = InsertNodes(numbers, 6, root);
 
-    std::cout << " - InOrder Traversals - " << std::endl;
+    std::cout << " ----- InOrder Traversals ----- " << std::endl;
     traverseInOrder(root);
+    std::cout << std::endl << std::endl;
+
+    std::cout << " ----- PreOrder Traversals ----- " << std::endl;
+    traversePreOrder(root);
+    std::cout << std::endl << std::endl;
+
+    std::cout << " ----- PostOrder Traversals ----- " << std::endl;
+    traversePostOrder(root);
     std::cout << std::endl << std::endl;
 }
