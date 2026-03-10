@@ -233,7 +233,6 @@ AVLNode* AVLInsert(AVLNode* root, int value) {
 AVLNode* InsertNodes(int array[], int size, AVLNode* root) {
     for (int i = 0; i < size; i++) {
         root = AVLInsert(root, array[i]);
-        globalRoot = root;
     }
 
     return root;
