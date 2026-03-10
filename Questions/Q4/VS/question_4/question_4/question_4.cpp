@@ -6,7 +6,6 @@ struct AVLNode {
     int value;
     int bf;
     int height;
-    int counter;
     struct AVLNode* left;
     struct AVLNode* right;
 };
@@ -15,7 +14,6 @@ AVLNode* createNode(int value) {
     newNode->value = value;
     newNode->bf = 0;
     newNode->height = 1;
-    newNode->counter = 0;
     newNode->left = nullptr;
     newNode->right = nullptr;
     return newNode;
@@ -30,97 +28,6 @@ int updateHeightBF(AVLNode* node) {
     node->height = max(updateHeightBF(node->left), updateHeightBF(node->right)) + 1;
 
     return node->height;
-}
-
-void rotationUpdater(AVLNode* node, AVLNode* tp) {
-    updateHeightBF(node);
-    updateHeightBF(tp);
-}
-
-//Left Rotation
-AVLNode* leftRotation(AVLNode* node) {
-    AVLNode* tp = node->right;
-    node->right = tp->left;
-    tp->left = node;
-
-    rotationUpdater(node, tp);
-
-    return tp;
-}
-
-// Right Rotation
-AVLNode* rightRotation(AVLNode* node) {
-    AVLNode* tp = node->left;
-    node->left = tp->right;
-    tp->right = node;
-
-    rotationUpdater(node, tp);
-
-    return tp;
-}
-
-// Left->Right Rotation
-AVLNode* leftRightRotation(AVLNode* node) {
-    AVLNode* tp = node->left;
-    node->left = tp->right;
-    node->left->left = tp;
-
-    return rightRotation(node);
-}
-
-// Right->Left Rotation
-AVLNode* rightLeftRotation(AVLNode* node) {
-    AVLNode* tp = node->right;
-    node->right = tp->left;
-    node->right->right = tp;
-
-    return leftRotation(node);
-}
-
-
-AVLNode* rotationHelper(AVLNode* node) {
-    if (node->bf < -1 && node->right->bf < -1) {
-        return leftRotation(node);
-    }
-    if (node->bf > 1 && node->left->bf < -1) {
-        return leftRightRotation(node);
-    }
-    if (node->bf < -1 && node->right->bf > 1) {
-        return rightLeftRotation(node);
-    }
-    if (node->bf > 1 && node->left->bf > 1) {
-        return rightRotation(node);
-    }
-    return node;
-}
-
-AVLNode* AVLInsert(AVLNode* root, int value) {
-    if (root == nullptr) {
-        return createNode(value);
-    }
-
-    if (root->value == value) {
-        root->counter++;
-        return root;
-    }
-
-    if (value > root->value) {
-        root->right = AVLInsert(root->right, value);
-    }
-    else if (value < root->value) {
-        root->left = AVLInsert(root->left, value);
-    }
-
-    updateHeightBF(root);
-    return rotationHelper(root);
-}
-
-AVLNode* InsertNodes(int array[], int size, AVLNode* root) {
-    for (int i = 0; i < size; i++) {
-        root = AVLInsert(root, array[i]);
-    }
-
-    return root;
 }
 
 void traversePreOrder(AVLNode* root) {
@@ -148,6 +55,113 @@ void traversePostOrder(AVLNode* root) {
     traversePostOrder(root->left);
     traversePostOrder(root->right);
     std::cout << root->value << " ";
+}
+
+void rotationUpdater(AVLNode* node, AVLNode* tp) {
+    updateHeightBF(node);
+    updateHeightBF(tp);
+}
+
+//Left Rotation
+AVLNode* leftRotation(AVLNode* node) {
+    std::cout << "Before Left Rotation: ";
+    traversePreOrder(node);
+    std::cout << endl;
+
+    AVLNode* tp = node->right;
+    node->right = tp->left;
+    tp->left = node;
+
+    rotationUpdater(node, tp);
+
+    std::cout << "After Left Rotation: ";
+    traversePreOrder(tp);
+    std::cout << endl << endl;
+
+    return tp;
+}
+
+// Right Rotation
+AVLNode* rightRotation(AVLNode* node) {
+    std::cout << "Before Right Rotation: ";
+    traversePreOrder(node);
+    std::cout << endl;
+
+    AVLNode* tp = node->left;
+    node->left = tp->right;
+    tp->right = node;
+
+    rotationUpdater(node, tp);
+
+    std::cout << "After Right Rotation: ";
+    traversePreOrder(tp);
+    std::cout << endl << endl;
+
+    return tp;
+}
+
+// Left->Right Rotation
+AVLNode* leftRightRotation(AVLNode* node) {
+    node->left = leftRotation(node->left);
+    return rightRotation(node);
+}
+
+// Right->Left Rotation
+AVLNode* rightLeftRotation(AVLNode* node) {
+    node->right = rightRotation(node->right);
+    return leftRotation(node);
+}
+
+AVLNode* rotationHelper(AVLNode* node) {
+    // Right-Right
+    if (node->bf < -1 && node->right->bf <= 0) {
+        return leftRotation(node);
+    }
+
+    // Left-Right
+    if (node->bf > 1 && node->left->bf < 0) {
+        return leftRightRotation(node);
+    }
+
+    // Right-Left
+    if (node->bf < -1 && node->right->bf > 0) {
+        return rightLeftRotation(node);
+    }
+
+    // Left-Left
+    if (node->bf > 1 && node->left->bf >= 0) {
+        return rightRotation(node);
+    }
+
+    return node;
+}
+
+AVLNode* AVLInsert(AVLNode* root, int value) {
+    if (root == nullptr) {
+        return createNode(value);
+    }
+
+    if (root->value == value) {
+        return root;
+    }
+
+    if (value > root->value) {
+        root->right = AVLInsert(root->right, value);
+    }
+    else if (value < root->value) {
+        root->left = AVLInsert(root->left, value);
+    }
+
+    updateHeightBF(root);
+    return rotationHelper(root);
+}
+
+AVLNode* InsertNodes(int array[], int size, AVLNode* root) {
+    for (int i = 0; i < size; i++) {
+        root = AVLInsert(root, array[i]);
+    }
+
+    return root;
 }
 
 int main()
