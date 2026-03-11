@@ -8,7 +8,7 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 # Add subdirectories, these will serve as "subprojects"
 add_subdirectory(src/question_1)
 add_subdirectory(src/question_2)
-# add_subdirectory(src/question_3)
+add_subdirectory(src/question_3)
 # add_subdirectory(src/question_4)
 
 # Add the executable (assuming it's named 'my_executable')
