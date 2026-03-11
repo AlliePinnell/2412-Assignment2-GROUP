@@ -1,0 +1,24 @@
+docker instructions:
+
+1. leave docker desktop open
+2. open vs code
+3. open explorer. open lab 1 folder (has to have .devcontainer inside of it)
+4. select the folder and open it
+- make sure the .devcontainer is in the root of your folder
+6. press ctrl shift p
+7. type dev and select "reopen in container"
+8. once clicked, it will start connecting to the container
+- you can see if the connection was successful at the bottom left corner and seeing a blue box
+9. press ctrl ~ and see vscode -> /workspace/comp...
+- command ls -la shows the files in your folder
+- command tree displays your files in a tree format
+10. go into cmake lists of the root and add the sub_directory
+- main cmake lists tells the computer everything it should compile
+to compile:
+ - mkdir build (make a build folder)
+ - cd build (to get inside the build folder)
+ - cmake .. (configure build based on cmake files)
+ - ls (to see make file)
+ - make
+ - cd bin (see bin)
+ - ./(file you want to run)
