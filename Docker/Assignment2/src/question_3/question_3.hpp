@@ -14,13 +14,22 @@ struct AVLNode {
 AVLNode* createNode(int value);
 
 // Function prototypes
-AVLNode* Insert(AVLNode*& root, int insertValue);
-AVLNode* Search(AVLNode* root, int searchValue);
-AVLNode* deleteAVLNode(AVLNode*& root, int deleteValue);
+int updateHeightBF(AVLNode* node);
 
 void traversePreOrder(AVLNode* root);
 void traverseInOrder(AVLNode* root);
 void traversePostOrder(AVLNode* root);
+
+void rotationUpdater(AVLNode* node, AVLNode* tp);
+
+AVLNode* leftRotation(AVLNode* node);
+AVLNode* rightRotation(AVLNode* node);
+AVLNode* leftRightRotation(AVLNode* node);
+AVLNode* rightLeftRotation(AVLNode* node);
+
+AVLNode* rotationHelper(AVLNode* node);
+
+AVLNode* AVLInsert(AVLNode*& root, int insertValue);
 
 AVLNode* InsertNodes(int array[], int size, AVLNode* root);
 
