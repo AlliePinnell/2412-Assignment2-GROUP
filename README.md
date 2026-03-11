@@ -23,6 +23,7 @@ This assignment is worth 10 points. Each question is worth 2.5 points.
 | What structure in Q4? | Same as the node structure, but add balance factor (can add height, but don't need to(?))
 | Do we need to print the Tree Structure for Q3/Q4? | Print before and after every rotation and print what rotation
 | Question 1 b) - Do you want the BST drawing and explained output of each traversal for both trees on paper or included in the complementary README? | draw it on paper, scan, and submit
+| Question 3 - What order do you want it in (preorder, postorder, inorder) | blank
 
 # Questions (copied from PDF)
 # Question 1
