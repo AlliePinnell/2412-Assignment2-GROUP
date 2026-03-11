@@ -12,20 +12,26 @@ int main() {
     secondRoot = InsertNodes(secondSequence, 7, secondRoot);
 
     std::cout << " ----- InOrder Traversals ----- " << std::endl;
+    std::cout << "First Sequence: ";
     traverseInOrder(firstRoot);
-    std::cout << std::endl << std::endl;
+    std::cout << std::endl;
+    std::cout << "Second Sequence: ";
     traverseInOrder(secondRoot);
     std::cout << std::endl << std::endl;
 
     std::cout << " ----- PreOrder Traversals ----- " << std::endl;
+    std::cout << "First Sequence: ";
     traversePreOrder(firstRoot);
-    std::cout << std::endl << std::endl;
+    std::cout << std::endl;
+    std::cout << "Second Sequence: ";
     traversePreOrder(secondRoot);
     std::cout << std::endl << std::endl;
 
     std::cout << " ----- PostOrder Traversals ----- " << std::endl;
+    std::cout << "First Sequence: ";
     traversePostOrder(firstRoot);
-    std::cout << std::endl << std::endl;
+    std::cout << std::endl;
+    std::cout << "Second Sequence: ";
     traversePostOrder(secondRoot);
     std::cout << std::endl << std::endl;
 }

@@ -11,21 +11,15 @@ int main()
     //third sequence traverse
     std::cout << " ----- InOrder Traversals ----- " << std::endl;
     traverseInOrder(rootThree);
-    std::cout << std::endl << std::endl;
-    traverseInOrder(rootThree);
-    std::cout << std::endl << std::endl;
+    std::cout << std::endl << std::endl;;
 
     std::cout << " ----- PreOrder Traversals ----- " << std::endl;
     traversePreOrder(rootThree);
-    std::cout << std::endl << std::endl;
-    traversePreOrder(rootThree);
-    std::cout << std::endl << std::endl;
+    std::cout << std::endl << std::endl;;
 
     std::cout << " ----- PostOrder Traversals ----- " << std::endl;
     traversePostOrder(rootThree);
-    std::cout << std::endl << std::endl;
-    traversePostOrder(rootThree);
-    std::cout << std::endl << std::endl;
+    std::cout << std::endl << std::endl;;
 
     //delete 40
     deleteNode(rootThree, 40);
@@ -41,7 +35,7 @@ int main()
 
     //delete 30
     deleteNode(rootThree, 30);
-    std::cout << std::endl << "- Updated InOrder (Deleted 30) - " << std::endl;
+    std::cout << std::endl << " - Updated InOrder (Deleted 30) - " << std::endl;
     traverseInOrder(rootThree);
     std::cout << std::endl;
 }
