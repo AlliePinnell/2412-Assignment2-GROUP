@@ -10,10 +10,10 @@ This assignment is worth 10 points. Each question is worth 2.5 points.
 
 | Questions | C++ Code Completion | Docker Implementation | Additional Things | FINAL REVIEW |
 | ----------- | ----------- | ----------- | ----------- | ----------- 
-| 1 | ✔️ | ✖️ | ✖️ | ✖️ |
-| 2 | ✔️ | ✖️ | ✖️ | ✖️ |
-| 3 | ✔️ | ✖️ | ✔️ | ✖️ |
-| 4 | ✖️ | ✖️ | ✖️ | ✖️ |
+| 1 | ✔️ | ✔️ | ✖️ | ✖️ |
+| 2 | ✔️ | ✔️ | ✖️ | ✖️ |
+| 3 | ✔️ | ✔️ | N/A | ✖️ |
+| 4 | ✔️ | ✔️ | ✖️ | ✖️ |
 
 
 # Questions for Thiago
