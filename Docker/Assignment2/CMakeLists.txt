@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.1)
-SET(CMAKE_APP_NAME "MyProjects")
+SET(CMAKE_APP_NAME "Assignment2")
 
 project(${CMAKE_APP_NAME})
 
